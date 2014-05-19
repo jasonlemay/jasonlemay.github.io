@@ -1,0 +1,109 @@
+/**
+ * STYLE
+ * Main CSS to rule them all
+ * Pages and custom elements style goes here
+ *
+ * Using
+ * - reset.less 		reset stylesheet
+ * - grid.less 			grid system, including mixins
+ * - colors.less 		variables for colorscheme
+ * - layout.less 		default style layout for your website
+ * - components.less 	styles and mixins for buttons, form, etc
+ *
+ * Created by @jasonlemay
+ */
+
+@import 'reset.less';
+@import 'grid.less';
+@import 'colors.less';
+@import 'components.less';
+@import 'functions.less';
+
+
+// -- Styles ---------------------------------------------
+
+html{font-size: 62.5%;}
+
+body{
+	font-family: 'Varela Round', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	font-size: 1.8rem;
+	padding: 3em 0;
+	background-color: @c-background;
+	color: @c-text;
+}
+
+.container{
+  	position: relative;
+	margin: 0 auto;
+	width: 960px;
+	@media screen and (max-width: 959px) {
+		width: 650px;
+	}
+	@media screen and (max-width: 649px) {
+		width: 320px;
+	}
+}
+
+// -- Headings -------------------------------------------
+
+h1{
+	font-size: 60px;
+	font-size: 6rem;
+	color: #fff;
+	text-shadow:
+		1px 1px 0 rgba(0,0,0,0.4);
+	margin: 40px 0 30px;
+	font-weight: 400;
+	@media(@mobile) {
+		margin: 20px 0 30px;
+		font-size: 40px;
+		font-size: 4rem;
+	}
+}
+h2{
+	font-size: 10px;
+	font-size: 1.5rem;
+	margin: 7px 0 0.9em;
+	color: @c-primary;
+}
+
+// -- Elements -------------------------------------------
+
+p{
+	line-height: 1.7em;
+	margin-bottom: 0.8em;
+}
+
+strong{
+	font-weight: bold;
+}
+
+em{
+	font-style: italic;
+}
+
+a{
+	text-decoration: none;
+	color: @c-text;
+	border-bottom: 1px dashed @c-text;
+
+	&:hover{
+		color: @c-primary;
+		border-bottom: 1px dashed @c-primary;
+	}
+}
+
+// -- Classes -------------------------------------------
+
+.hidden { display: none; visibility: hidden; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+// -- Print ----------------------------------------------
+
+@import url('print.less');

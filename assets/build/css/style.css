@@ -1,0 +1,846 @@
+/**
+ * STYLE
+ * Main CSS to rule them all
+ * Pages and custom elements style goes here
+ *
+ * Using
+ * - reset.less 		reset stylesheet
+ * - grid.less 			grid system, including mixins
+ * - colors.less 		variables for colorscheme
+ * - layout.less 		default style layout for your website
+ * - components.less 	styles and mixins for buttons, form, etc
+ *
+ * Created by @jasonlemay
+ */
+/* ------------------------------------------------------> */
+/*  HTML5 ? Boilerplate                                    */
+/* ------------------------------------------------------> */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+input,
+select {
+  vertical-align: middle;
+}
+body {
+  font: 13px/1.231 sans-serif;
+  *font-size: small;
+}
+select,
+input,
+textarea,
+button {
+  font: 99% sans-serif;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, sans-serif;
+}
+html {
+  overflow-y: scroll;
+}
+a:hover,
+a:active {
+  outline: none;
+}
+ul,
+ol {
+  margin-left: 2em;
+}
+ol {
+  list-style-type: decimal;
+}
+nav ul,
+nav li {
+  margin: 0;
+  list-style: none;
+  list-style-image: none;
+}
+small {
+  font-size: 85%;
+}
+strong,
+th {
+  font-weight: bold;
+}
+td {
+  vertical-align: top;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 15px;
+}
+textarea {
+  overflow: auto;
+}
+.ie6 legend,
+.ie7 legend {
+  margin-left: -7px;
+}
+input[type="radio"] {
+  vertical-align: text-bottom;
+}
+input[type="checkbox"] {
+  vertical-align: bottom;
+}
+.ie7 input[type="checkbox"] {
+  vertical-align: baseline;
+}
+.ie6 input {
+  vertical-align: text-bottom;
+}
+label,
+input[type="button"],
+input[type="submit"],
+input[type="image"],
+button {
+  cursor: pointer;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+input:invalid,
+textarea:invalid {
+  border-radius: 1px;
+  -moz-box-shadow: 0px 0px 5px red;
+  -webkit-box-shadow: 0px 0px 5px red;
+  box-shadow: 0px 0px 5px red;
+}
+.no-boxshadow input:invalid,
+.no-boxshadow textarea:invalid {
+  background-color: #f0dddd;
+}
+::-moz-selection {
+  background: #3cbcf1;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #3cbcf1;
+  color: #fff;
+  text-shadow: none;
+}
+a:link {
+  -webkit-tap-highlight-color: #3cbcf1;
+}
+button {
+  width: auto;
+  overflow: visible;
+}
+.ie7 img {
+  -ms-interpolation-mode: bicubic;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+/**
+ * GRIDPAK
+ * responsive grid with breakpoints for mobile and desktop
+ * 
+ * Mobile   < 650px
+ * Table    >= 650px, < 960px
+ * Desktop  >= 960px
+ *
+ * Generator - http://gridpak.com/
+ * Created by @erskinedesign
+ * Adapted version by @jasonlemay
+ */
+.mixin-col {
+  border: 0px solid rgba(0, 0, 0, 0);
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding-box !important;
+  -webkit-background-clip: padding-box !important;
+  background-clip: padding-box !important;
+  margin-bottom: 0;
+}
+.col {
+  border: 0px solid rgba(0, 0, 0, 0);
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding-box !important;
+  -webkit-background-clip: padding-box !important;
+  background-clip: padding-box !important;
+  margin-bottom: 0;
+}
+.row.nospace .col {
+  padding: 0;
+}
+.mixin-span_first {
+  margin-left: 0;
+}
+.row.sameh {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.row.sameh .col {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+/* 1. MOBILE - 4 Column Grid 0px - 649px 
+----------------------------------------------------------------------------- 
+
+.col-m1_4:      1 / 4
+.col-m1_2:      1 / 2
+.col-m3_4:      3 / 4
+.col-mfull:     Full
+.col-mhide:     Hidden in mobile
+
+----------------------------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 649px) {
+  .col {
+    margin-left: 1%;
+    padding: 0 10px;
+  }
+  .col-m1_4,
+  .col-t1_4,
+  .col-1_4 {
+    width: 25%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-m1_2,
+  .col-t1_2,
+  .col-1_2 {
+    width: 50%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-m3_4,
+  .col-t3_4,
+  .col-3_4 {
+    width: 75%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-mfull,
+  .col-tfull,
+  .col-full {
+    margin-left: 0;
+    width: 98%;
+    margin-left: 1%;
+  }
+  .col-mhide {
+    display: none;
+  }
+}
+/* 2. TABLET - 8 Column Grid 650px - 959px 
+----------------------------------------------------------------------------- 
+
+.col-t1_8:      1 / 8
+.col-t1_4:      1 / 4
+.col-t3_8:      3 / 8 (fallback for DESKTOP 1 / 3)
+.col-t1_2:      1 / 2
+.col-t5_8:      5 / 8 (fallback for DESKTOP 2 / 3)
+.col-t3_4:      3 / 4
+.col-t7_8:      7 / 8
+.col-tfull:     Full
+.col-thide:     Hidden in tablet
+
+----------------------------------------------------------------------------- */
+@media screen and (min-width: 650px) and (max-width: 959px) {
+  .col {
+    margin-left: 0.5%;
+    padding: 0 10px;
+  }
+  .row .col:first-child {
+    margin-left: 0;
+  }
+  .col-t1_8 {
+    width: 12.5%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t1_4,
+  .col-1_4 {
+    width: 25%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t3_8,
+  .col-1_3 {
+    width: 37.5%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t1_2,
+  .col-1_2 {
+    width: 50%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t5_8,
+  .col-2_3 {
+    width: 62.5%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t3_4,
+  .col-3_4 {
+    width: 75%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-t7_8 {
+    width: 87.5%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-tfull,
+  .col-full {
+    width: 100%;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    padding: 0 10px;
+    margin-left: 0;
+  }
+  .col-thide {
+    display: none;
+  }
+}
+/* 3. DESKTOP - 12 Column Grid 960px - Infinity 
+----------------------------------------------------------------------------- 
+
+.col-1_12:     1 / 12
+.col-1_6:      1 / 6
+.col-1_4:      1 / 4
+.col-1_3:      1 / 3 
+.col-5_12:     5 / 12
+.col-1_2:      1 / 2 
+.col-7_12:     7 / 12
+.col-2_3:      2 / 3
+.col-3_4:      3 / 4
+.col-5_6:      5 / 6
+.col-11_12:    11 / 12
+.col-full:     Full
+.col-hide:     Hidden in desktop
+
+----------------------------------------------------------------------------- */
+@media screen and (min-width: 960px) {
+  .col {
+    margin-left: 0;
+    padding: 0 5px;
+  }
+  .row .col:first-child {
+    margin-left: 0;
+  }
+  .col-1_12 {
+    width: 8.333333333333334%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-1_6 {
+    width: 16.666666666666668%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-1_4 {
+    width: 25%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-1_3 {
+    width: 33.333333333333336%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-5_12 {
+    width: 41.66666666666667%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-1_2 {
+    width: 50%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-7_12 {
+    width: 58.333333333333336%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-2_3 {
+    width: 66.66666666666667%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-3_4 {
+    width: 75%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-5_6 {
+    width: 83.33333333333334%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-11_12 {
+    width: 91.66666666666667%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-full {
+    width: 100%;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    padding: 0 0px;
+    margin-left: 0;
+  }
+  .col-hide {
+    display: none;
+  }
+}
+/**
+ * COLORS
+ * Color scheme, ...
+ * Created by @jasonlemay
+ */
+/**
+ * COMPONENTS
+ * Elements like forms, buttons, popups, ...
+ * Created by @jasonlemay
+ */
+form p label {
+  display: inline-block;
+  width: 30%;
+  margin-right: 2%;
+}
+form p label.full {
+  width: 100%;
+  margin-right: 0;
+}
+form p input {
+  display: inline-block;
+  width: 68%;
+}
+form p input.full {
+  width: 100%;
+}
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------
+
+  - Gradient background
+  - Drop shadow
+  - Inner shadow
+  - Rounded
+  - Border radius
+  - Opacity
+  - Transition
+  - Transition duration
+  - Rotation
+  - Scale
+  - Translate
+  - Box sizing
+
+ */
+/* - Gradient background
+ *
+ * First color is the background color to use for browsers 
+ * that don't support gradients. The second two colors are 
+ * the start and stop colors, going from bottom to top. 
+ */
+/* - Drop shadow
+ *
+ * Adds a box-shadow that is a semi-transparent black. The 
+ * first two values control the x and y axis position, the 
+ * third controls blur (how big the shadow is), and the final 
+ * value is the opacity (0 is fully transparent, 1 is opaque).
+ */
+/* - Inner shadow
+ *
+ * Sets the inner shadow. The first two numbers are the x and y
+ * coordinates, the third is the blur and the last one is the 
+ * strength of the shadow.
+ */
+/* - Box shadow
+ */
+/* - Rounded
+ *
+ * Sets a border-radius for all 4 corners. If you want to set 
+ * border-radius for individual corners use: .border-radius
+ */
+/* - Border radius
+ *
+ * Sets a border-radius for each of the 4 corners individually. 
+ * The values go in a clockwise rotation: top right, bottom right, 
+ * bottom left, top left.
+ */
+/* - Opacity
+ *
+ * Sets the opacity. 0 is fully transparent, 1 is opaque.
+ */
+/* - Transition
+ *
+ * Sets the transition duration and effect to use for any 
+ * transitions (e.g. hover effects), unlike transition-duration 
+ * which only sets the duration.
+ */
+/* - Transition duration
+ *
+ * Sets a transition-duration (time it takes to do things like 
+ * hover effects). The value provides a time in seconds.
+ */
+/* - Transform
+ */
+/* - Rotation
+ *
+ * Rotates the item by a number of degrees clockwise.
+ */
+/* - Scale
+ *
+ * Scales the item by the ratio provided. The example makes the 
+ * item 2 times larger.
+ */
+/* - Translate
+ *
+ * Translates an element using the given coordinates. The values 
+ * are x and y offset coordinates, so the above example moves the
+ * element right 10 pixels and up 20 pixels.
+ */
+/* - Boox sizing
+ *
+ * Allows you to alter the CSS box model. For example, by setting 
+ * this to 'border-box' the width and height properties will 
+ * include the padding and border values.
+ */
+/* - Background clip
+ */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.8rem;
+  padding: 3em 0;
+  background-color: #ffffff;
+  color: #202020;
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 960px;
+}
+@media screen and (max-width: 959px) {
+  .container {
+    width: 650px;
+  }
+}
+@media screen and (max-width: 649px) {
+  .container {
+    width: 320px;
+  }
+}
+h1 {
+  font-size: 60px;
+  font-size: 6rem;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  margin: 40px 0 30px;
+  font-weight: 400;
+}
+@media (max-width: 649px) {
+  h1 {
+    margin: 20px 0 30px;
+    font-size: 40px;
+    font-size: 4rem;
+  }
+}
+h2 {
+  font-size: 10px;
+  font-size: 1.5rem;
+  margin: 7px 0 0.9em;
+  color: #3cbcf1;
+}
+p {
+  line-height: 1.7em;
+  margin-bottom: 0.8em;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+a {
+  text-decoration: none;
+  color: #202020;
+  border-bottom: 1px dashed #202020;
+}
+a:hover {
+  color: #3cbcf1;
+  border-bottom: 1px dashed #3cbcf1;
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.invisible {
+  visibility: hidden;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+  a,
+  a:visited {
+    color: #444 !important;
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
